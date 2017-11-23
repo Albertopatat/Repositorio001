@@ -12,14 +12,19 @@ package oo01;
 
 
 public class Triangulo {
-   
-    public Triangulo (int letra, int cantLados, int base, int altura, , int dimensiones) {
-    This.letra = letra;
-    This.cantLados = cantLados;
-    This.base = base;
-    This.altura = altura;
+    int cantLados;
+    float base;
+    float altura;
+    char letra;
+    int dimensiones;
     
-    This.dimensiones = dimensiones;
-    }      
+    Triangulo (char letra, int cantLados, int base, int altura, int dimensiones) {
+    this.letra = letra;
+    this.cantLados = cantLados;
+    this.base = base;
+    this.altura = altura;
+    this.dimensiones = dimensiones;
+    }     
+}
 
     

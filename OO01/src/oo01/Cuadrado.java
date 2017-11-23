@@ -18,7 +18,7 @@ public class Cuadrado {
     
     //metodo constructor
     public Cuadrado(){
-    letra = 1;
+    letra = 'b';
     cantLados = 4;
     base = 10;
     recto = false;
