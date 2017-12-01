@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 public class OO02 extends JFrame {
 	private static Graph panelGrafico;
-	
+	int figura = 0;
 	// * Modificar la clase Circulo de forma que ademas de la posicion, el color sea distinto en casa instancia.
 	// * Agregar 2 botones mas que agreguen tanto rectanculos como triangulos.
 	// * validar que no se dibuje nada fuera de la pantalla.
@@ -36,6 +36,7 @@ public class OO02 extends JFrame {
                         System.out.println("X: " + x +" Y:" + y);
                         Circulo q = new Circulo(x, y, dx, dy, color); 
 			panelGrafico.addCirculo(q);
+                        figura = 1;
                     }
 		});
                // panelGrafico2 = new Graph();
@@ -52,6 +53,7 @@ public class OO02 extends JFrame {
                         System.out.println("X: " + x +" Y:" + y);
                         Cuadrado j = new Cuadrado(x, y, dx, dy, color); 
 			panelGrafico.addCuadrado(j);
+                        figura = 2;
                     }
 		});
                 //panelGrafico3 = new Graph();
@@ -71,19 +73,27 @@ public class OO02 extends JFrame {
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Triangulo m = new Triangulo(x, y, lados, color); 
 			panelGrafico.addTriangulo(m);
+                        figura = 3;
+                    }
+                
+                JButton crearImagen4 = new JButton("Borrar ultima");
+		crearImagen4.setSize(60, 60);
+		crearImagen4.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent e){
+			panelGrafico.eliminate(figura);
+                        figura = 3;
                     }
 		});
-		add(panelGrafico);
+		this.add(panelGrafico);
 		add(crearImagen,BorderLayout.NORTH);
                 add(crearImagen2,BorderLayout.SOUTH);
                 add(crearImagen3,BorderLayout.EAST);
                 
-	}
-	
+	}    
 	
 	 public static void main(String[] args) {
 		JFrame ventana = new OO02();
 		ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		ventana.setSize(600,600);
+		ventana.setSize(1000,600);
 		ventana.setVisible(true);
 }       }
