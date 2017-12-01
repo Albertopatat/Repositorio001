@@ -9,17 +9,19 @@ public class Circulo {
 	private int y;
 	private int dx;
 	private int dy;
-	private Color color;
+	private Color color = new Color(0,0,0,0);
 
-	public Circulo(int x,int y,int dx,int dy){
+	public Circulo(int x, int y, int dx, int dy, Color color){
 		this.x = x;
 		this.y = y;
 		this.dx = dx;
 		this.dy = dy;
+                this.color = color;
 	}
 
 	public void Dibujar(Graphics g){
-		g.setColor(Color.RED);
+		g.setColor(color);
+                System.out.println(color);
 		g.fillOval(x, y, dx, dy);
 	}
 	
