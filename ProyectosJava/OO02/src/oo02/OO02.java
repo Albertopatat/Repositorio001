@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 
 public class OO02 extends JFrame {
 	private static Graph panelGrafico;
-        private static Graph panelGrafico2;
-        private static Graph panelGrafico3;
 	
 	// * Modificar la clase Circulo de forma que ademas de la posicion, el color sea distinto en casa instancia.
 	// * Agregar 2 botones mas que agreguen tanto rectanculos como triangulos.
@@ -77,6 +75,8 @@ public class OO02 extends JFrame {
 		});
 		add(panelGrafico);
 		add(crearImagen,BorderLayout.NORTH);
+                add(crearImagen2,BorderLayout.SOUTH);
+                add(crearImagen3,BorderLayout.EAST);
                 
 	}
 	

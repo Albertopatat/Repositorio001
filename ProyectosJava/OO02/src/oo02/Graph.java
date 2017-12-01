@@ -17,15 +17,16 @@ import javax.swing.JPanel;
  */
 
 public class Graph extends JPanel {
-	private List<Circulo> circulos;
-        private List<Cuadrado> cuadrados;
-        private List<Triangulo> triangulos;
-	
+	private ArrayList<Circulo> circulos = new ArrayList<Circulo>();
+        private ArrayList<Cuadrado> cuadrados = new ArrayList<Cuadrado>();
+        private ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
+          
+        
 	public void Graph(){
-		circulos = new ArrayList<Circulo>();
-                cuadrados = new ArrayList<Cuadrado>();
-                triangulos = new ArrayList<Triangulo>();
-                
+            //circulos = new ArrayList<Circulo>();
+            //   cuadrados = new ArrayList<Cuadrado>();
+            //  triangulos = new ArrayList<Triangulo>();
+              
 	}
 	
 	public void addCirculo(Circulo c){
@@ -43,15 +44,20 @@ public class Graph extends JPanel {
 		repaint();
 	}
         
-        
-    
 	protected void paintComponent(Graphics g){
 		super.paintComponents(g);
-                if (circulos != null){
-		for(Circulo q: circulos){
-			q.Dibujar(g);
+                System.out.println("Numero de elementos en la lista: " + circulos.size());
+                for(Circulo q: circulos){
+                    q.Dibujar(g);
 		}
-                }
+                for(Cuadrado q: cuadrados){
+                    q.Dibujar(g);
+		}
+                for(Triangulo q: triangulos){
+                    q.Dibujar(g);
+		}
+                
+                
         }
                 
 }  
