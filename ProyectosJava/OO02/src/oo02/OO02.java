@@ -8,14 +8,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 
+
 public class OO02 extends JFrame {
 	private static Graph panelGrafico;
-	int figura = 0;
-	// * Modificar la clase Circulo de forma que ademas de la posicion, el color sea distinto en casa instancia.
+		
+        // * Modificar la clase Circulo de forma que ademas de la posicion, el color sea distinto en casa instancia.
 	// * Agregar 2 botones mas que agreguen tanto rectanculos como triangulos.
 	// * validar que no se dibuje nada fuera de la pantalla.
-	// - Agregar un boton que elimine el ultimo objeto insertado.
-	// - Agregar 3 botones que elimines segun corresponda el ultimo objeto insertado.
+	// * Agregar un boton que elimine el ultimo objeto insertado.
+	// * Agregar 3 botones que elimines segun corresponda el ultimo objeto insertado.
+        
+        // Todo funciona, excepto la reimpresion en pantalla ya que siguen apareciendo los objetos borrados hasta que se redimenciona, min o max, la vantana
 	
 	public OO02(){
 		panelGrafico = new Graph();
@@ -32,14 +35,11 @@ public class OO02 extends JFrame {
 			int x = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			int y = (int)((panelGrafico.getHeight() - dy) * Math.random()); // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
-                        System.out.println(color);
-                        System.out.println("X: " + x +" Y:" + y);
                         Circulo q = new Circulo(x, y, dx, dy, color); 
 			panelGrafico.addCirculo(q);
-                        figura = 1;
-                    }
+                        }
 		});
-               // panelGrafico2 = new Graph();
+               
 		JButton crearImagen2 = new JButton("Cuadrado");
 		crearImagen2.setSize(60, 60);
 		crearImagen2.addActionListener(new ActionListener(){
@@ -49,14 +49,11 @@ public class OO02 extends JFrame {
 			int x = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Restando ancho aparezca dentro de ventana
 			int y = (int)((panelGrafico.getHeight() - dy) * Math.random()); // Restando ancho aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
-                        System.out.println(color);
-                        System.out.println("X: " + x +" Y:" + y);
                         Cuadrado j = new Cuadrado(x, y, dx, dy, color); 
 			panelGrafico.addCuadrado(j);
-                        figura = 2;
-                    }
+                        }
 		});
-                //panelGrafico3 = new Graph();
+               
 		JButton crearImagen3 = new JButton("Triangulo");
 		crearImagen3.setSize(60, 60);
 		crearImagen3.addActionListener(new ActionListener(){
@@ -64,36 +61,71 @@ public class OO02 extends JFrame {
 			int lados = 3; //Cantidad de lados
                         int dx = 50; //Ancho del triangulo
                         int dy = (int) Math.sqrt ((Math.pow(dx, 2) - Math.pow((dx/2), 2)));
-			System.out.println(dy);
-                        int xaux = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Coordenada x primer punto, abajo a la izq.
+			int xaux = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Coordenada x primer punto, abajo a la izq.
                         int yaux = (int)(((panelGrafico.getHeight() - dy) * Math.random())+43); // Coordenada y primer punto, abajo a la izq.
-                        
                         int x[] = {xaux, xaux + 50, xaux + 25}; 
 			int y[] = {yaux, yaux, yaux - dy}; // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Triangulo m = new Triangulo(x, y, lados, color); 
-			panelGrafico.addTriangulo(m);
-                        figura = 3;
-                    }
-                
+                        panelGrafico.addTriangulo(m);
+                        }
+                });
+               
                 JButton crearImagen4 = new JButton("Borrar ultima");
 		crearImagen4.setSize(60, 60);
 		crearImagen4.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-			panelGrafico.eliminate(figura);
-                        figura = 3;
-                    }
+                        public void actionPerformed(ActionEvent e){
+			panelGrafico.borraultimo();
+                        }
 		});
-		this.add(panelGrafico);
-		add(crearImagen,BorderLayout.NORTH);
+                
+                /*JButton crearImagen5 = new JButton("Borrar circulo"); // NO LOS ACTIVO PORQUE SE SUPERPONEN LOS BOTONES
+		crearImagen5.setSize(60, 60);
+		crearImagen5.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+			panelGrafico.borracirculo();
+                        }
+		});
+		
+                JButton crearImagen6 = new JButton("Borrar cuadrado");
+		crearImagen6.setSize(60, 60);
+		crearImagen6.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+			panelGrafico.borracuadrado();
+                        }
+		});
+                
+                JButton crearImagen7 = new JButton("Borra triangulo");
+		crearImagen7.setSize(60, 60);
+		crearImagen7.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+			panelGrafico.borratriangulo();
+                        }
+		});*/
+                
+                add(panelGrafico); // Imprime en pantalla los objetos
+                // Envia a la ventana los botones.
+		
+                add(crearImagen,BorderLayout.NORTH);
                 add(crearImagen2,BorderLayout.SOUTH);
                 add(crearImagen3,BorderLayout.EAST);
+                add(crearImagen4,BorderLayout.WEST);
+                //add(crearImagen5,BorderLayout.WEST);
+                //add(crearImagen6,BorderLayout.WEST);
+                //add(crearImagen7,BorderLayout.WEST);
+                
+                
                 
 	}    
 	
-	 public static void main(String[] args) {
+        public static void main(String[] args) {
 		JFrame ventana = new OO02();
 		ventana.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		ventana.setSize(1000,600);
 		ventana.setVisible(true);
-}       }
+                ventana.setBackground(Color.yellow);
+                }              
+    }

@@ -13,13 +13,16 @@ import java.awt.Graphics;
  * @author Alberto
  */
 public class Cuadrado {
-    private int x;
+        private int x;
 	private int y;
 	private int dx;
 	private int dy;
 	private Color color = new Color(0,0,0,0);
                 
-	public Cuadrado(int x,int y,int dx,int dy, Color color){
+	public Cuadrado(){
+        }
+        
+        public Cuadrado(int x,int y,int dx,int dy, Color color){
 		this.x = x;
 		this.y = y;
 		this.dx = dx;
@@ -27,9 +30,12 @@ public class Cuadrado {
                 this.color = color; //PREGUNTA, POR QUÉ CAMBIA EL TONO DE LOS CIRCULOS CADA VEZ QUE REIMPRIME.
 	}
 
-	public void Dibujar(Graphics g){
+	public void setColor (Color color){
+            this.color = color;
+        }
+        
+        public void Dibujar(Graphics g){
 		g.setColor(color);
-                System.out.println(color);
-		g.fillRect(x, y, dx, dy);
+                g.fillRect(x, y, dx, dy);
 	}   
 }

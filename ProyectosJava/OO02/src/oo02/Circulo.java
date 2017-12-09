@@ -11,18 +11,24 @@ public class Circulo {
 	private int dy;
 	private Color color = new Color(0,0,0,0);
 
-	public Circulo(int x, int y, int dx, int dy, Color color){
+	public Circulo(){
+        }
+        
+        public Circulo(int x, int y, int dx, int dy, Color color){
 		this.x = x;
 		this.y = y;
 		this.dx = dx;
 		this.dy = dy;
                 this.color = color;
-	}
+        }
+        
+        public void setColor(Color color){
+        this.color = color;
+        }
 
 	public void Dibujar(Graphics g){
 		g.setColor(color);
-                System.out.println(color);
-		g.fillOval(x, y, dx, dy);
+                g.fillOval(x, y, dx, dy);
 	}
 	
 }
