@@ -5,11 +5,13 @@
  */
 package oo02;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 /**
  *
@@ -80,16 +82,23 @@ public class Graph extends JPanel {
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
                 switch (ultimoelemento.get(ultimoelemento.size() - 1)) {
                 
-                case 1:
-                    borracirculo();
-                    break;       
-                case 2:
-                    borracuadrado();
-                    break;
-                case 3:
-                    borratriangulo();
-                    break;
+                    case 1:
+                        borracirculo();
+                        break;       
+                    case 2:
+                        borracuadrado();
+                        break;
+                    case 3:
+                        borratriangulo();
+                        break;
                 };
+                }
+            else {
+                Avisos Aviso = new Avisos();
+                JLabel texto = new JLabel();
+                texto.setText ("No hay mas elementos");
+                Aviso.add(texto);
+                Aviso.setVisible(true);
             }
         }
         
@@ -108,7 +117,7 @@ public class Graph extends JPanel {
                     System.out.println("Tamaño de ListArray triangulos: " + triangulos.size());
                     z.Dibujar(g);
 		}
-                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());// + " y es un: " +(ultimoelemento.get(ultimoelemento.size() - 1)) );
+                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size() + " y es un: " + (ultimoelemento.get(ultimoelemento.size() - 1)));
         }
                 
 }  
