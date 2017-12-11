@@ -21,77 +21,74 @@ public class Graph extends JPanel {
         private ArrayList<Cuadrado> cuadrados = new ArrayList<Cuadrado>();
         private ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
         private ArrayList<Integer> ultimoelemento = new ArrayList<Integer>();
-                               
+        
+        
 	public void Graph(){
-            //circulos = new ArrayList<Circulo>(); No funciona aquí, tienen que ser declaradas e iniciadas fuera de los metodos de la clase.
-            //cuadrados = new ArrayList<Cuadrado>();
-            //triangulos = new ArrayList<Triangulo>();
+        
+        ultimoelemento.add(0);
+        
+        //circulos = new ArrayList<Circulo>(); No funciona aquí, tienen que ser declaradas e iniciadas fuera de los metodos de la clase.
+        //cuadrados = new ArrayList<Cuadrado>();
+        //triangulos = new ArrayList<Triangulo>();
               
         }
         	
 	public void addCirculo(Circulo c){
 		circulos.add(c);
 		ultimoelemento.add(1);
-                repaint();
-	}
+                }
 	
         public void addCuadrado(Cuadrado j){
 		cuadrados.add(j);
 		ultimoelemento.add(2);
-                repaint();
-	}
+                }
 	
         public void addTriangulo(Triangulo m){
 		triangulos.add(m);
                 ultimoelemento.add(3);
-                repaint();
                 }
         
         public void borracirculo(){
-            if (circulos != null && !circulos.isEmpty()){
-            circulos.remove(circulos.size()-1);
-            ultimoelemento.remove(ultimoelemento.size()-1);
-            repaint();
+            if (ultimoelemento != null && !ultimoelemento.isEmpty()){
+                if (circulos != null && !circulos.isEmpty()){
+                    circulos.remove(circulos.size()-1);
+                    ultimoelemento.remove(ultimoelemento.size()-1);
+            
+                }
             }
         }
         
         public void borracuadrado(){
-            if (cuadrados != null && !cuadrados.isEmpty()){
-            cuadrados.remove(cuadrados.size()-1);
-            ultimoelemento.remove(ultimoelemento.size()-1);
-            repaint();
+            if (ultimoelemento != null && !ultimoelemento.isEmpty()){
+                if (cuadrados != null && !cuadrados.isEmpty()){
+                    cuadrados.remove(cuadrados.size()-1);
+                    ultimoelemento.remove(ultimoelemento.size()-1);
+                    }
             }
         }
         
         public void borratriangulo(){
-            if (triangulos != null && !triangulos.isEmpty()){
-                triangulos.remove(triangulos.size()-1);
-                ultimoelemento.remove(ultimoelemento.size()-1);
-                repaint();
-            }
+            if (ultimoelemento != null && !ultimoelemento.isEmpty()){
+                if (triangulos != null && !triangulos.isEmpty()){
+                    triangulos.remove(triangulos.size()-1);
+                    ultimoelemento.remove(ultimoelemento.size()-1);
+                    }
+                }
         }
         public void borraultimo(){
-                
+        
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
                 switch (ultimoelemento.get(ultimoelemento.size() - 1)) {
                 
                 case 1:
-                    if(circulos != null && !circulos.isEmpty()){
-                        borracirculo();
-                        }
-                break;       
-                
+                    borracirculo();
+                    break;       
                 case 2:
-                    if (cuadrados != null && !cuadrados.isEmpty()){
-                        borracuadrado();
-                        }
-                break;
-                
+                    borracuadrado();
+                    break;
                 case 3:
-                        if (triangulos != null && !triangulos.isEmpty()){
-                        borratriangulo();
-                        }
-                break;
+                    borratriangulo();
+                    break;
                 };
             }
         }
@@ -111,7 +108,7 @@ public class Graph extends JPanel {
                     System.out.println("Tamaño de ListArray triangulos: " + triangulos.size());
                     z.Dibujar(g);
 		}
-                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());
+                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());// + " y es un: " +(ultimoelemento.get(ultimoelemento.size() - 1)) );
         }
                 
 }  

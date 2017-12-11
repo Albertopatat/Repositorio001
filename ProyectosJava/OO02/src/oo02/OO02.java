@@ -1,12 +1,14 @@
 package oo02;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
+import javax.swing.JPanel;
 
 
 public class OO02 extends JFrame {
@@ -37,6 +39,7 @@ public class OO02 extends JFrame {
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Circulo q = new Circulo(x, y, dx, dy, color); 
 			panelGrafico.addCirculo(q);
+                        repaint();                        
                         }
 		});
                
@@ -51,6 +54,7 @@ public class OO02 extends JFrame {
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Cuadrado j = new Cuadrado(x, y, dx, dy, color); 
 			panelGrafico.addCuadrado(j);
+                        repaint();
                         }
 		});
                
@@ -68,54 +72,76 @@ public class OO02 extends JFrame {
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Triangulo m = new Triangulo(x, y, lados, color); 
                         panelGrafico.addTriangulo(m);
+                        repaint();
                         }
                 });
                
-                JButton crearImagen4 = new JButton("Borrar ultima");
-		crearImagen4.setSize(60, 60);
-		crearImagen4.addActionListener(new ActionListener(){
+                JButton borraImagenes = new JButton("Borrar ultima");
+		borraImagenes.setSize(60, 60);
+		borraImagenes.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
 			panelGrafico.borraultimo();
+                        revalidate();
+                        repaint();
                         }
 		});
                 
-                /*JButton crearImagen5 = new JButton("Borrar circulo"); // NO LOS ACTIVO PORQUE SE SUPERPONEN LOS BOTONES
-		crearImagen5.setSize(60, 60);
-		crearImagen5.addActionListener(new ActionListener(){
+                JButton borracirculo = new JButton("Borrar circulo"); // NO LOS ACTIVO PORQUE SE SUPERPONEN LOS BOTONES
+		borracirculo.setSize(60, 60);
+		borracirculo.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
 			panelGrafico.borracirculo();
+                        revalidate();
+                        repaint();
                         }
 		});
 		
-                JButton crearImagen6 = new JButton("Borrar cuadrado");
-		crearImagen6.setSize(60, 60);
-		crearImagen6.addActionListener(new ActionListener(){
+                JButton borracuadrado = new JButton("Borrar cuadrado");
+		borracuadrado.setSize(60, 60);
+		borracuadrado.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
 			panelGrafico.borracuadrado();
-                        }
+                        revalidate();
+                        repaint();
+                    }
 		});
                 
-                JButton crearImagen7 = new JButton("Borra triangulo");
-		crearImagen7.setSize(60, 60);
-		crearImagen7.addActionListener(new ActionListener(){
+                JButton borratriangulo = new JButton("Borra triangulo");
+		borratriangulo.setSize(60, 60);
+		borratriangulo.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
 			panelGrafico.borratriangulo();
-                        }
-		});*/
+                        revalidate();
+                        repaint();
+                    }
+		});
                 
                 add(panelGrafico); // Imprime en pantalla los objetos
                 // Envia a la ventana los botones.
-		
-                add(crearImagen,BorderLayout.NORTH);
+                
+                JPanel panelBotones = new JPanel(new GridLayout(10, 50, 1, 1));
+                panelBotones.add(crearImagen);
+                panelBotones.add(crearImagen2);
+                panelBotones.add(crearImagen3);
+                
+                panelBotones.add(borracirculo);
+                panelBotones.add(borracuadrado);
+                panelBotones.add(borratriangulo);
+                panelBotones.add(borraImagenes);
+    
+		add(panelBotones, BorderLayout.WEST); //boton a la region oeste
+                add(panelGrafico, BorderLayout.CENTER);
+                
+                /*add(crearImagen,BorderLayout.NORTH);
                 add(crearImagen2,BorderLayout.SOUTH);
                 add(crearImagen3,BorderLayout.EAST);
                 add(crearImagen4,BorderLayout.WEST);
-                //add(crearImagen5,BorderLayout.WEST);
-                //add(crearImagen6,BorderLayout.WEST);
-                //add(crearImagen7,BorderLayout.WEST);
+                add(crearImagen5,BorderLayout.WEST);
+                add(crearImagen6,BorderLayout.WEST);
+                add(crearImagen7,BorderLayout.WEST);*/
                 
                 
                 
