@@ -59,7 +59,8 @@ public class Graph extends JPanel {
                     ultimoelemento.remove(ultimoelemento.size() - ultimocirculo());
                 }
                 else {
-                    Avisocirculo = new Avisos("No hay mas Circulos");
+                    Avisocirculo = new Avisos();
+                    Avisocirculo.setAviso("No hay mas Circulos (desde le setter)");
                     Avisocirculo.setVisible(true);
                 }
             }
@@ -75,7 +76,7 @@ public class Graph extends JPanel {
                     ultimoelemento.remove(ultimoelemento.size() - ultimocuadrado());
                 }
                 else {
-                Avisocuadrado = new Avisos("No hay mas Cuadrados");
+                Avisocuadrado = new Avisos("No hay mas Cuadrados"); // En esta opción asigno el valor directamente al metodo constructor a través de un parametro que en el mismo constructor envia al objeto anidado, texto.
                 Avisocuadrado.setVisible(true);
                 }
             }
