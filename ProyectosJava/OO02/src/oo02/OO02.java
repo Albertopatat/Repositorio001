@@ -122,7 +122,7 @@ public class OO02 extends JFrame {
                 add(panelGrafico); // Imprime en pantalla los objetos
                 // Envia a la ventana los botones.
                 
-                JPanel panelBotones = new JPanel(new GridLayout(10, 50, 1, 1));
+                JPanel panelBotones = new JPanel(new GridLayout(10, 100, 1, 1));
                 panelBotones.add(crearImagen);
                 panelBotones.add(crearImagen2);
                 panelBotones.add(crearImagen3);

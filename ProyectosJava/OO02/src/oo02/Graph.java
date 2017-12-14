@@ -8,11 +8,12 @@ package oo02;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
+ 
 /**
  *
  * @author Alberto
@@ -23,18 +24,18 @@ public class Graph extends JPanel {
         private ArrayList<Cuadrado> cuadrados = new ArrayList<Cuadrado>();
         private ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
         private ArrayList<Integer> ultimoelemento = new ArrayList<Integer>();
-        
+        private Avisos Avisoelemento = new Avisos();
+        private Avisos Avisocirculo = new Avisos();
+        private Avisos Avisocuadrado = new Avisos();
+        private Avisos Avisotriangulo = new Avisos();
         
 	public void Graph(){
+                //circulos = new ArrayList<Circulo>(); No funciona aquí, tienen que ser declaradas e iniciadas fuera de los metodos de la clase.
+                //cuadrados = new ArrayList<Cuadrado>();
+                //triangulos = new ArrayList<Triangulo>();
+                }
         
-        ultimoelemento.add(0);
-        
-        //circulos = new ArrayList<Circulo>(); No funciona aquí, tienen que ser declaradas e iniciadas fuera de los metodos de la clase.
-        //cuadrados = new ArrayList<Cuadrado>();
-        //triangulos = new ArrayList<Triangulo>();
-              
-        }
-        	
+        // Agrega las figuras a sus ArrayList.
 	public void addCirculo(Circulo c){
 		circulos.add(c);
 		ultimoelemento.add(1);
@@ -50,13 +51,20 @@ public class Graph extends JPanel {
                 ultimoelemento.add(3);
                 }
         
+        //Borra las figuras de sus arraylist y de la lista de elementos.
         public void borracirculo(){
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
                 if (circulos != null && !circulos.isEmpty()){
                     circulos.remove(circulos.size()-1);
-                    ultimoelemento.remove(ultimoelemento.size()-1);
-            
+                    ultimoelemento.remove(ultimoelemento.size() - ultimocirculo());
                 }
+                else {
+                    Avisocirculo = new Avisos("No hay mas Circulos");
+                    Avisocirculo.setVisible(true);
+                }
+            }
+            else {
+                Avisoelemento.setVisible(true);
             }
         }
         
@@ -64,8 +72,15 @@ public class Graph extends JPanel {
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
                 if (cuadrados != null && !cuadrados.isEmpty()){
                     cuadrados.remove(cuadrados.size()-1);
-                    ultimoelemento.remove(ultimoelemento.size()-1);
-                    }
+                    ultimoelemento.remove(ultimoelemento.size() - ultimocuadrado());
+                }
+                else {
+                Avisocuadrado = new Avisos("No hay mas Cuadrados");
+                Avisocuadrado.setVisible(true);
+                }
+            }
+            else {
+                Avisoelemento.setVisible(true);
             }
         }
         
@@ -73,10 +88,48 @@ public class Graph extends JPanel {
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
                 if (triangulos != null && !triangulos.isEmpty()){
                     triangulos.remove(triangulos.size()-1);
-                    ultimoelemento.remove(ultimoelemento.size()-1);
+                    ultimoelemento.remove(ultimoelemento.size() - ultimotriangulo());
                     }
+                else {
+                Avisotriangulo = new Avisos();
+                Avisotriangulo.setAviso("No hay mas Triangulos");
+                Avisotriangulo.setVisible(true);
                 }
+            }
+            else {
+                Avisoelemento.setVisible(true);
+            }
         }
+        
+        
+        // Obtiene la posición del ultimo circulo, triangulo o cuadrado dentro del ArrayList.
+        public int ultimocirculo(){
+            int i = 1;
+            while (ultimoelemento.get(ultimoelemento.size() - i) != 1){
+                i ++; 
+                }
+            System.out.println("valor de i: " + i);
+            return i;
+        }
+        
+        public int ultimocuadrado(){
+            int i = 1;
+            while (ultimoelemento.get(ultimoelemento.size() - i) != 2){
+                i ++; 
+                }
+            System.out.println("valor de i: " + i);
+            return i;
+        }
+        
+        public int ultimotriangulo(){
+            int i = 1;
+            while (ultimoelemento.get(ultimoelemento.size() - i) != 3){
+                i ++; 
+                }
+            System.out.println("valor de i: " + i);
+            return i;
+        }
+        
         public void borraultimo(){
         
             if (ultimoelemento != null && !ultimoelemento.isEmpty()){
@@ -94,11 +147,8 @@ public class Graph extends JPanel {
                 };
                 }
             else {
-                Avisos Aviso = new Avisos();
-                JLabel texto = new JLabel();
-                texto.setText ("No hay mas elementos");
-                Aviso.add(texto);
-                Aviso.setVisible(true);
+                //Avisoelemento.setAviso("No hay elementos"); Se asigna al atributo mensaje por defecto "No hay elementos" por si se presiona al inicio borrar alguna figura.
+                Avisoelemento.setVisible(true);
             }
         }
         
@@ -117,7 +167,7 @@ public class Graph extends JPanel {
                     System.out.println("Tamaño de ListArray triangulos: " + triangulos.size());
                     z.Dibujar(g);
 		}
-                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size() + " y es un: " + (ultimoelemento.get(ultimoelemento.size() - 1)));
+                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());
         }
                 
 }  
