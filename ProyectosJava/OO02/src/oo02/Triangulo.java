@@ -12,7 +12,7 @@ import java.awt.Graphics;
  *
  * @author Alberto
  */
-public class Triangulo {
+public class Triangulo implements Dibujar {
     private int[] x = new int[3];
     private int[] y = new int[3];
     private int dx;

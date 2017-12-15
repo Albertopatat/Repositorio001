@@ -19,7 +19,7 @@ public class Avisos extends JFrame {
         private String mensaje = "No hay figura para borrar";  //Al crear un nuevo objeto, el mismo tendra esto como valor inicial de mensaje
         private JLabel texto;
         
-        //Al crear un instancia de una clase, un objeto, lo hace según el método constructor que se llame. 
+        //Al crear una instancia de una clase, un objeto, lo hace según el método constructor que se llame. 
         // a su vez inicializa los atributos con los valores seteados en ese momento. En este caso siempre utiliza el valor
         // original del atributo mensaje. Por esta razón en el mismo setter debe asignarse al objeto texto el nuevo valor de la variable o atributo.
                
@@ -41,11 +41,13 @@ public class Avisos extends JFrame {
                 setSize(300, 120); //setea tamaño
                 setLocation(200, 200); //setea la ubicacion
                 getContentPane().setBackground(Color.YELLOW); //setea el color de fondo
+                setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 texto = new JLabel();
                 texto.setFont(new Font("Stylus BT", 1, 20)); //Setea la fuente, el tipo y el tamaño según disponiblesn en Windows.
                 texto.setForeground(Color.BLUE); //Setea el color de la fuente del objeto texto de la clase JLabel.
                 texto.setText (mensaje); //Setea el texto del objeto.
                 this.add(texto);
+                
         }
         
         

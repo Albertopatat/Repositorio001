@@ -12,7 +12,7 @@ import java.awt.Graphics;
  *
  * @author Alberto
  */
-public class Cuadrado {
+public class Cuadrado implements Dibujar {
         private int x;
 	private int y;
 	private int dx;

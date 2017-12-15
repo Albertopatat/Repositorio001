@@ -23,6 +23,7 @@ public class Graph extends JPanel {
 	private ArrayList<Circulo> circulos = new ArrayList<Circulo>();
         private ArrayList<Cuadrado> cuadrados = new ArrayList<Cuadrado>();
         private ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
+        private ArrayList<Dibujar> varios = new ArrayList<Dibujar>();
         private ArrayList<Integer> ultimoelemento = new ArrayList<Integer>();
         private Avisos Avisoelemento = new Avisos();
         private Avisos Avisocirculo = new Avisos();
@@ -38,16 +39,21 @@ public class Graph extends JPanel {
         // Agrega las figuras a sus ArrayList.
 	public void addCirculo(Circulo c){
 		circulos.add(c);
+                varios.add(c);
+                System.out.print("cantidad en varios " + varios.size());
 		ultimoelemento.add(1);
                 }
 	
         public void addCuadrado(Cuadrado j){
 		cuadrados.add(j);
+                varios.add(j);
+                System.out.print("cantidad en varios " + varios.size());
 		ultimoelemento.add(2);
                 }
 	
         public void addTriangulo(Triangulo m){
 		triangulos.add(m);
+                varios.add(m);
                 ultimoelemento.add(3);
                 }
         
@@ -155,20 +161,25 @@ public class Graph extends JPanel {
         
 	protected void paintComponent(Graphics g){
 		super.paintComponents(g);
-                
-                for(Circulo q: circulos){
-                    System.out.println("Tamaño de ListArray circulos: " + circulos.size());
+                for(Dibujar q: varios){
+                    System.out.println("Tamaño de ListArray varios: " + varios.size());
                     q.Dibujar(g);
 		}
-                for(Cuadrado w: cuadrados){
-                    System.out.println("Tamaño de ListArray cuadrados: " + cuadrados.size());
-                    w.Dibujar(g);
-		}
-                for(Triangulo z: triangulos){
-                    System.out.println("Tamaño de ListArray triangulos: " + triangulos.size());
-                    z.Dibujar(g);
-		}
-                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());
+//                for(Circulo q: circulos){
+//                    System.out.println("Tamaño de ListArray circulos: " + circulos.size());
+//                    q.Dibujar(g);
+//		}
+//                
+//                for(Cuadrado w: cuadrados){
+//                    System.out.println("Tamaño de ListArray cuadrados: " + cuadrados.size());
+//                    w.Dibujar(g);
+//		}
+//                
+//                for(Triangulo z: triangulos){
+//                    System.out.println("Tamaño de ListArray triangulos: " + triangulos.size());
+//                    z.Dibujar(g);
+//		}
+//                System.out.println("Cantidad de objetos dentro del array elementos: " + ultimoelemento.size());
         }
                 
 }  

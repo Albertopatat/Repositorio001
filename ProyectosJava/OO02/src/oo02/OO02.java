@@ -153,5 +153,6 @@ public class OO02 extends JFrame {
 		ventana.setSize(1000,600);
 		ventana.setVisible(true);
                 ventana.setBackground(Color.yellow);
+            //
                 }              
     }
