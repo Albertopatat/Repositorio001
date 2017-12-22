@@ -20,7 +20,7 @@ public class OO02 extends JFrame {
 	// * Agregar un boton que elimine el ultimo objeto insertado.
 	// * Agregar 3 botones que elimines segun corresponda el ultimo objeto insertado.
         
-        // Todo funciona, excepto la reimpresion en pantalla ya que siguen apareciendo los objetos borrados hasta que se redimenciona, min o max, la vantana
+        // Todo funciona, esta versión con una interface para hacer solo un arrayList de las figuras.
 	
 	public OO02(){
 		panelGrafico = new Graph();
@@ -32,12 +32,13 @@ public class OO02 extends JFrame {
 		crearImagen.setSize(60, 60);
 		crearImagen.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-			int dx = 50;
+			int tipo = 1;
+                        int dx = 50;
 			int dy = 50;
 			int x = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			int y = (int)((panelGrafico.getHeight() - dy) * Math.random()); // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
-                        Circulo q = new Circulo(x, y, dx, dy, color); 
+                        Circulo q = new Circulo(tipo, x, y, dx, dy, color); 
 			panelGrafico.addCirculo(q);
                         repaint();                        
                         }
@@ -47,12 +48,13 @@ public class OO02 extends JFrame {
 		crearImagen2.setSize(60, 60);
 		crearImagen2.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-			int dx = 50;
+			int tipo = 2;
+                        int dx = 50;
 			int dy = 50;
 			int x = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Restando ancho aparezca dentro de ventana
 			int y = (int)((panelGrafico.getHeight() - dy) * Math.random()); // Restando ancho aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
-                        Cuadrado j = new Cuadrado(x, y, dx, dy, color); 
+                        Cuadrado j = new Cuadrado(tipo, x, y, dx, dy, color); 
 			panelGrafico.addCuadrado(j);
                         repaint();
                         }
@@ -62,15 +64,16 @@ public class OO02 extends JFrame {
 		crearImagen3.setSize(60, 60);
 		crearImagen3.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e){
-			int lados = 3; //Cantidad de lados
+			int tipo = 3;
+                        int lados = 3; //Cantidad de lados
                         int dx = 50; //Ancho del triangulo
                         int dy = (int) Math.sqrt ((Math.pow(dx, 2) - Math.pow((dx/2), 2)));
 			int xaux = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Coordenada x primer punto, abajo a la izq.
                         int yaux = (int)(((panelGrafico.getHeight() - dy) * Math.random())+43); // Coordenada y primer punto, abajo a la izq.
-                        int x[] = {xaux, xaux + 50, xaux + 25}; 
-			int y[] = {yaux, yaux, yaux - dy}; // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
+                        int x[] = {tipo, xaux, xaux + 50, xaux + 25}; 
+			int y[] = {tipo, yaux, yaux, yaux - dy}; // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
-                        Triangulo m = new Triangulo(x, y, lados, color); 
+                        Triangulo m = new Triangulo(tipo, x, y, lados, color); 
                         panelGrafico.addTriangulo(m);
                         repaint();
                         }

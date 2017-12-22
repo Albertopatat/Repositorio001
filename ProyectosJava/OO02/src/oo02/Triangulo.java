@@ -13,6 +13,8 @@ import java.awt.Graphics;
  * @author Alberto
  */
 public class Triangulo implements Dibujar {
+    
+    private int tipo;
     private int[] x = new int[3];
     private int[] y = new int[3];
     private int dx;
@@ -21,8 +23,9 @@ public class Triangulo implements Dibujar {
     public Triangulo (){
     }
     
-    public Triangulo(int[] x, int[] y, int dx, Color color){
-	this.x = x;
+    public Triangulo(int tipo, int[] x, int[] y, int dx, Color color){
+	this.tipo = tipo;
+        this.x = x;
 	this.y = y;
 	this.dx = dx;
 	this.color = color; //PREGUNTA, POR QUÉ CAMBIA EL TONO DE LOS CIRCULOS CADA VEZ QUE REIMPRIME.
@@ -32,9 +35,12 @@ public class Triangulo implements Dibujar {
             this.color = color;
         }
     
+    public int getTipo(){
+        return tipo;
+    }
+    
     public void Dibujar(Graphics g){ 
-	System.out.println(color);
-        g.setColor(color);
+	g.setColor(color);
         g.fillPolygon(x, y, dx);
         ;
     }    

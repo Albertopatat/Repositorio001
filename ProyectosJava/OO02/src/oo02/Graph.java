@@ -23,7 +23,7 @@ public class Graph extends JPanel {
 	private ArrayList<Circulo> circulos = new ArrayList<Circulo>();
         private ArrayList<Cuadrado> cuadrados = new ArrayList<Cuadrado>();
         private ArrayList<Triangulo> triangulos = new ArrayList<Triangulo>();
-        private ArrayList<Dibujar> varios = new ArrayList<Dibujar>();
+        private ArrayList<Dibujar> arrayFiguras = new ArrayList<Dibujar>();
         private ArrayList<Integer> ultimoelemento = new ArrayList<Integer>();
         private Avisos Avisoelemento = new Avisos();
         private Avisos Avisocirculo = new Avisos();
@@ -39,30 +39,30 @@ public class Graph extends JPanel {
         // Agrega las figuras a sus ArrayList.
 	public void addCirculo(Circulo c){
 		circulos.add(c);
-                varios.add(c);
-                System.out.print("cantidad en varios " + varios.size());
+                arrayFiguras.add(c);
+                System.out.print("cantidad en arrayFiguras " + arrayFiguras.size());
 		ultimoelemento.add(1);
                 }
 	
         public void addCuadrado(Cuadrado j){
 		cuadrados.add(j);
-                varios.add(j);
-                System.out.print("cantidad en varios " + varios.size());
+                arrayFiguras.add(j);
+                System.out.print("cantidad en arrayFiguras " + arrayFiguras.size());
 		ultimoelemento.add(2);
                 }
 	
         public void addTriangulo(Triangulo m){
 		triangulos.add(m);
-                varios.add(m);
+                arrayFiguras.add(m);
                 ultimoelemento.add(3);
                 }
         
         //Borra las figuras de sus arraylist y de la lista de elementos.
         public void borracirculo(){
-            if (ultimoelemento != null && !ultimoelemento.isEmpty()){
+            if (arrayFiguras != null && !arrayFiguras.isEmpty()){
                 if (circulos != null && !circulos.isEmpty()){
                     circulos.remove(circulos.size()-1);
-                    ultimoelemento.remove(ultimoelemento.size() - ultimocirculo());
+                    ultimoelemento.remove(ultimoelemento.size() - ultimocirculo()); //Me da la ubicación de la ultima figura del tipo circulo
                 }
                 else {
                     Avisocirculo = new Avisos();
@@ -121,7 +121,9 @@ public class Graph extends JPanel {
         
         public int ultimocuadrado(){
             int i = 1;
-            while (ultimoelemento.get(ultimoelemento.size() - i) != 2){
+            Cuadrado q = new Cuadrado(); //Acá intento, creando un objeto instanciable, igualarlo a uno almacenado en el arrayList
+            q = arrayFiguras.get(arrayFiguras.size() - i); // aquí.
+            while (arrayFiguras.get(arrayFiguras.size() - i) != class<Cuadrado>) { // tratando de comparar tipos de objetos.
                 i ++; 
                 }
             System.out.println("valor de i: " + i);
@@ -161,8 +163,8 @@ public class Graph extends JPanel {
         
 	protected void paintComponent(Graphics g){
 		super.paintComponents(g);
-                for(Dibujar q: varios){
-                    System.out.println("Tamaño de ListArray varios: " + varios.size());
+                for(Dibujar q: arrayFiguras){
+                    System.out.println("Tamaño de ListArray arrayFiguras: " + arrayFiguras.size());
                     q.Dibujar(g);
 		}
 //                for(Circulo q: circulos){

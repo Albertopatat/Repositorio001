@@ -13,6 +13,8 @@ import java.awt.Graphics;
  * @author Alberto
  */
 public class Cuadrado implements Dibujar {
+        
+        private int tipo;
         private int x;
 	private int y;
 	private int dx;
@@ -22,8 +24,9 @@ public class Cuadrado implements Dibujar {
 	public Cuadrado(){
         }
         
-        public Cuadrado(int x,int y,int dx,int dy, Color color){
-		this.x = x;
+        public Cuadrado(int tipo, int x,int y,int dx,int dy, Color color){
+		this.tipo = tipo;
+                this.x = x;
 		this.y = y;
 		this.dx = dx;
 		this.dy = dy;
@@ -32,6 +35,10 @@ public class Cuadrado implements Dibujar {
 
 	public void setColor (Color color){
             this.color = color;
+        }
+        
+        public int getTipo(){
+            return tipo;
         }
         
         public void Dibujar(Graphics g){

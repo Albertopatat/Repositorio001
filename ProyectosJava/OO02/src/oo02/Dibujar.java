@@ -12,7 +12,7 @@ import java.awt.Graphics;
  * @author Pc 3
  */
 public interface Dibujar {
-    
+   
    public void Dibujar(Graphics g);
     
 }
