@@ -13,6 +13,7 @@ import java.awt.Graphics;
  */
 public interface Dibujar {
    
-   public void Dibujar(Graphics g);
-    
+    public void Dibujar(Graphics g);
+
+    public int getTipo();
 }
