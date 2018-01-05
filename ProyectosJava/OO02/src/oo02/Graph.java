@@ -54,8 +54,8 @@ public class Graph extends JPanel {
         //Borra las figuras de sus arraylist y de la lista de elementos.
         public void borracirculo(){
             if (arrayFiguras != null && !arrayFiguras.isEmpty()){
-                if (ultimocirculo() != arrayFiguras.size() - 1){
-                    arrayFiguras.remove(arrayFiguras.size() - ultimocirculo()); //Me da la ubicación de la ultima figura del tipo circulo
+                if (ultimocirculo() != -1){// verifica si existen circulos, si es igual a -1 significa que no.
+                    arrayFiguras.remove(ultimocirculo()); //Me da la ubicación de la ultima figura del tipo circulo
                 }
                 else {
                     Avisocirculo = new Avisos();
@@ -70,8 +70,8 @@ public class Graph extends JPanel {
         
         public void borracuadrado(){
             if (arrayFiguras != null && !arrayFiguras.isEmpty()){
-                if (ultimocuadrado() != arrayFiguras.size() - 1){
-                    arrayFiguras.remove(arrayFiguras.size() - ultimocuadrado());
+                if (ultimocuadrado() != -1){
+                    arrayFiguras.remove(ultimocuadrado());
                 }
                 else {
                 Avisocuadrado = new Avisos("No hay mas Cuadrados"); // En esta opción asigno el valor directamente al metodo constructor a través de un parametro que en el mismo constructor envia al objeto anidado, texto.
@@ -85,8 +85,8 @@ public class Graph extends JPanel {
         
         public void borratriangulo(){
             if (arrayFiguras != null && !arrayFiguras.isEmpty()){
-                if (ultimotriangulo() != arrayFiguras.size() - 1){
-                arrayFiguras.remove(arrayFiguras.size() - ultimotriangulo());
+                if (ultimotriangulo() != -1) {
+                arrayFiguras.remove(ultimotriangulo());
                 }
                 else {
                 Avisotriangulo = new Avisos();
@@ -102,32 +102,46 @@ public class Graph extends JPanel {
         
         // Obtiene la posición del ultimo circulo, triangulo o cuadrado dentro del ArrayList.
         public int ultimocirculo(){
-            int i = 1;
-            while (arrayFiguras.get(arrayFiguras.size() - i).getTipo() != 1){
-                i ++; 
-                }
-            System.out.println("valor de i: " + i);
-            return i;
+            int pos = arrayFiguras.size() - 1;
+            boolean exist = false;
+            do  {
+                if (arrayFiguras.get(pos).getTipo() == 1){ // verifica que el elemento sea del tipo buscado.
+                    exist = true;
+                    }
+                else {pos --; }
+            System.out.println("valor de ultimo " + pos + " valor de exist: " + exist);
+            }while (!exist && pos >= 0) ; // verifica todas las posiciones del array hasta que es menos 1.
+            System.out.println("valor de ultimo: " + pos);
+            if (!exist){pos = -1;} // si no se encuentra el tipo de figura en todo el array devuelve un numero mayor al del tamaño del arrayFiguras.
+            return pos;
         }
         
         public int ultimocuadrado(){
-            int i = 1;
-            // IMPORTANTE cuando se genera un arrayList de interface de objetos, para utilizar los metodos es necesario que aparezcan en la interface.
-            // en este caso getTipo está declarada dentro de la interface Dibujar
-            while (arrayFiguras.get(arrayFiguras.size() - i).getTipo() != 2) { // tratando de comparar tipos de objetos.
-                i ++; 
-                }
-            System.out.println("valor de i: " + i);
-            return i;
+            int pos = arrayFiguras.size() - 1;
+            boolean exist = false;
+            do  {
+                if (arrayFiguras.get(pos).getTipo() == 2){ // verifica que el elemento sea del tipo buscado.
+                    exist = true;
+                    }
+                else {pos --; }
+            System.out.println("valor de ultimo " + pos + " valor de exist: " + exist);
+            }while (!exist && pos >= 0) ; // verifica todas las posiciones del array hasta que es menos 1.
+            System.out.println("valor de ultimo: " + pos);
+            if (!exist){pos = -1;} // si no se encuentra el tipo de figura en todo el array devuelve un numero mayor al del tamaño del arrayFiguras.
+            return pos;
         }
         
         public int ultimotriangulo(){
-            int i = 1;
-            while (arrayFiguras.get(arrayFiguras.size() - i).getTipo() != 3){
-                i ++; 
+            int i = 0;
+            int pos = -1;
+            for(Dibujar q: arrayFiguras){ //AQUI USO LA SENTENCIA "FOR EACH" EL PROBLEMA ES QUE RECORRE TODO EL ARRAYLIST...
+            if (q.getTipo() == 3){
+                pos = i;
                 }
+            i++;
+            }
             System.out.println("valor de i: " + i);
-            return i;
+            return pos;
         }
         
         public void borraultimo(){

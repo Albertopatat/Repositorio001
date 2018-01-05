@@ -70,8 +70,8 @@ public class OO02 extends JFrame {
                         int dy = (int) Math.sqrt ((Math.pow(dx, 2) - Math.pow((dx/2), 2)));
 			int xaux = (int)((panelGrafico.getWidth() - dx) * Math.random()); // Coordenada x primer punto, abajo a la izq.
                         int yaux = (int)(((panelGrafico.getHeight() - dy) * Math.random())+43); // Coordenada y primer punto, abajo a la izq.
-                        int x[] = {tipo, xaux, xaux + 50, xaux + 25}; 
-			int y[] = {tipo, yaux, yaux, yaux - dy}; // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
+                        int x[] = {xaux, xaux + dx, xaux + dx / 2}; 
+			int y[] = {yaux, yaux, yaux - dy}; // Restando un diametro y sumando un radio valido que aparezca dentro de ventana
 			Color color = new Color( (int)(Math.random() * 255), (int)(Math.random()* 255), (int)(Math.random()* 255));
                         Triangulo m = new Triangulo(tipo, x, y, lados, color); 
                         panelGrafico.addTriangulo(m);
